@@ -10,6 +10,7 @@ class SharedPrefs (private val context: Context) {
         private const val PREF_TOKEN = "user_token"
     }
 
+    // TODO: data store로 변경!!
     private val sharedPref: SharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
 
 

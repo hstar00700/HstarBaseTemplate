@@ -9,7 +9,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface SampleApi {
-    //TODO: noAuth 구분
     @GET("api/users")
     fun sampleUserData(): Single<SampleResponse>
 

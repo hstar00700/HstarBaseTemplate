@@ -25,7 +25,7 @@ import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.hstar.base.presentation.BaseActivity
 import com.hstar.domain.sample.entity.UserEntity
-import com.hstar.presentation.comon.component.theme.O2oTheme
+import com.hstar.presentation.comon.component.theme.BaseTheme
 import com.orhanobut.logger.Logger
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             run {
-                O2oTheme {
+                BaseTheme {
                     Surface {
                         Modifier.padding(vertical = 25.dp)
                         MainScreen()
@@ -161,7 +161,11 @@ class MainActivity : BaseActivity() {
                 Column(
                     Modifier
                         .padding(2.dp)
-                        .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(30.dp)),
+                        .border(
+                            width = 1.dp,
+                            color = Color.White,
+                            shape = RoundedCornerShape(30.dp)
+                        ),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(

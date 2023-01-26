@@ -1,11 +1,15 @@
 package com.hstar.data.sample
 
+import com.hstar.data.common.di.Local
 import com.hstar.data.common.di.NetworkModule
 import com.hstar.data.common.di.Remote
+import com.hstar.data.sample.local.source.LocalDateSourceImpl
 import com.hstar.data.sample.remote.api.SampleApi
 import com.hstar.data.sample.remote.source.RemoteDataSourceImpl
+import com.hstar.data.sample.repository.BatteryInfoRepositoryImpl
 import com.hstar.data.sample.repository.SampleRepositoryImpl
 import com.hstar.data.sample.repository.UserRepositoryImpl
+import com.hstar.domain.battery.BatteryRepository
 import com.hstar.domain.sample.SampleRepository
 import com.hstar.domain.user.UserRepository
 import dagger.Module
@@ -31,6 +35,10 @@ object SampleModule {
         sampleApi: SampleApi,
     ): RemoteDataSourceImpl = RemoteDataSourceImpl(sampleApi)
 
+    @Local
+    @Provides
+    fun provideLocalDataSource(): LocalDateSourceImpl = LocalDateSourceImpl()
+
     @Singleton
     @Provides
     fun provideSampleRepository(
@@ -46,5 +54,13 @@ object SampleModule {
         @Remote remoteDataSource: RemoteDataSourceImpl
     ): UserRepository {
         return UserRepositoryImpl(remoteDataSource)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBatteryRepository(
+        @Local localDataSource: LocalDateSourceImpl
+    ): BatteryRepository {
+        return BatteryInfoRepositoryImpl(localDataSource)
     }
 }

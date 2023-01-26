@@ -2,7 +2,6 @@ package com.hstar.data.common.utils
 
 object Constants {
     const val BASE_URL = "https://reqres.in/"
-    const val BASE_ORDERN_URL = "https://api.ordern.co.kr"
     const val BASE_OKHTTP_CLIENT = "base"
 
     const val HEADER_CONTENT_TYPE = "Content-Type"

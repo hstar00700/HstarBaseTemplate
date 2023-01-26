@@ -5,8 +5,6 @@ import com.hstar.domain.sample.entity.UserEntity
 import io.reactivex.rxjava3.core.Single
 
 interface SampleRepository {
-    //TODO: coroutine
     fun getUserData(): Single<List<UserEntity>>
-
     fun signIn(id: String, pw: String): Single<SignInEntity>
 }

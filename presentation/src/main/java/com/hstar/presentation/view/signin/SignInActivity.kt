@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.hong.presentation.R
 import com.hstar.base.presentation.BaseActivity
 import com.hstar.base.presentation.util.repeatOnStarted
 import com.hstar.domain.sample.entity.UserEntity
@@ -52,10 +51,10 @@ class SignInActivity : BaseActivity() {
             run {
                 BaseTheme {
                     Surface {
-                        ImageWholeBackground(
-                            backgroundDrawableResId = R.drawable.bg_sign_in,
-                            modifier = Modifier.fillMaxSize()
-                        )
+//                        ImageWholeBackground(
+//                            backgroundDrawableResId = R.drawable.bg_sign_in,
+//                            modifier = Modifier.fillMaxSize()
+//                        )
                         SignInScreen()
                     }
                 }
@@ -64,33 +63,7 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun setObserve() {
-        // 1. 기존 옵저버 패턴을 이용하는 경우 : 플랫폼에 의존성이 생기므로 이벤트 플로우로 대체하기로 함
-//        viewModel.singInResult.asLiveData().observe(this) {
-//            Logger.d("User List - $it")
-//        }
-
-        // 2. 코루틴 스코프 사용
-//        lifecycleScope.launch {
-//            // repeatOnLifecycle launches the block in a new coroutine every time the
-//            // lifecycle is in the STARTED state (or above) and cancels it when it's STOPPED.
-//            repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                // Trigger the flow and start listening for values.
-//                // Note that this happens when lifecycle is STARTED and stops
-//                // collecting when the lifecycle is STOPPED
-//                viewModel.singInResult.collect { result ->
-//                    // New value received
-//                    when (result) {
-////                        is LatestNewsUiState.Success -> showFavoriteNews(uiState.news)
-////                        is LatestNewsUiState.Error -> showError(uiState.exception)
-//                        //TODO: 로그인 플로우 처리!!
-//
-//                    }
-//                }
-//            }
-//        }
-
-        // 3. 최종버전
-        repeatOnStarted {   // repeatOnLifecycle(Lifecycle.State.STARTED)와 같은 코드를 수행
+        repeatOnStarted {
             viewModel.signInEvent.collect { event ->
                 when(event) {
                     is SignInViewModel.Event.LoginEvent -> {
@@ -98,7 +71,6 @@ class SignInActivity : BaseActivity() {
                     }
                     is SignInViewModel.Event.LoadUsersEvent -> {
                         //TODO: do event
-                        // UserDetailsScreen 에 해당데이터로 뷰를 리콤포즈하는 코드를 작성!!
                     }
                 }
             }
@@ -139,13 +111,13 @@ fun LogInView(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                ImageWholeBackground(
-                    contentScale = ContentScale.Crop,
-                    backgroundDrawableResId = R.drawable.kds_logo_small,
-                    modifier = Modifier
-                        .height(80.dp)
-                        .width(240.dp)
-                )
+//                ImageWholeBackground(
+//                    contentScale = ContentScale.Crop,
+//                    backgroundDrawableResId = R.drawable.kds_logo_small,
+//                    modifier = Modifier
+//                        .height(80.dp)
+//                        .width(240.dp)
+//                )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically
@@ -200,43 +172,6 @@ fun UserDetailsScreen(
 ) {
     var scrollState = rememberScrollState()
 
-    // 1. produceState 를 사용하는 방법
-//        val uiState by produceState(initialValue = UserUseCaseUiState(isLoading = true)) {
-//            val userResult = viewModel.userList
-//            //TODO: network error found check!!
-//            value = userResult.value?.let {
-//                UserUseCaseUiState(userDetails = it, isLoading = false, throwError = false)
-//            } ?: UserUseCaseUiState(userDetails = emptyList(), throwError = true)
-//        }
-//
-//        Logger.w("Ui state : $uiState")
-//
-//        when {
-//            !uiState.throwError && uiState.userDetails != null -> {
-//
-//                Column {
-//                    for (user in uiState.userDetails!!) {
-//                        key(user.id) {
-//                            DetailsContent(user, modifier.fillMaxSize())
-//                        }
-//                    }
-//                }
-//            }
-//            uiState.isLoading -> {
-//                Box(modifier.fillMaxSize()) {
-//                    CircularProgressIndicator(
-//                        color = MaterialTheme.colors.onSurface,
-//                        modifier = Modifier.align(Alignment.Center)
-//                    )
-//                }
-//            }
-//            else -> { onErrorLoading() }
-//        }
-
-    // 2. 라이브데이터 직접 스테이트로 변환해서 사용하는 방법 : observeAsState 찾아볼것!!!
-    //val userList = viewModel.userList.value
-
-    Logger.i("User list in Compose - $userList")
     Spacer(modifier = Modifier.padding(0.dp, 25.dp))
     when {
         userList.isNotEmpty() -> {

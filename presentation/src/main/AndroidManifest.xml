@@ -15,14 +15,26 @@
 
     <application>
         <activity
-            android:name=".view.signin.SignInActivity"
+            android:name="com.hstar.presentation.view.battery.BatteryInfoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" />
+        <receiver android:name="com.hstar.base.util.PowerConnectionReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.hstar.presentation.view.signin.SignInActivity" />
+        <activity
+            android:name="com.hstar.presentation.view.MainActivity" />
+
     </application>
 
 </manifest>

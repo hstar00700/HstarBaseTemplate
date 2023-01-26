@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACTION_POWER_CONNECTED" />
+    <uses-permission android:name="android.permission.ACTION_POWER_DISCONNECTED" />
 
     <application
         android:name="com.hstar.app.MyApplication"
@@ -15,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanArchitecturePractice"
         tools:targetApi="31">
-
     </application>
 
 </manifest>

@@ -1,7 +1,7 @@
 package com.hstar.data.common.di
 
 import com.hstar.data.common.utils.Constants.BASE_OKHTTP_CLIENT
-import com.hstar.data.common.utils.Constants.BASE_ORDERN_URL
+import com.hstar.data.common.utils.Constants.BASE_URL
 import com.hstar.data.common.utils.Constants.CONNECT_TIMEOUT
 import com.hstar.data.common.utils.Constants.GENERAL_AUTH
 import com.hstar.data.common.utils.Constants.READ_TIMEOUT
@@ -31,7 +31,7 @@ object NetworkModule {
     ): Retrofit = Retrofit.Builder()
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_ORDERN_URL)
+        .baseUrl(BASE_URL)
         .client(okHttpClientBuilder.build())
         .build()
 
