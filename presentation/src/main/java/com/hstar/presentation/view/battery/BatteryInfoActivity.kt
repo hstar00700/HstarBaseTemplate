@@ -79,7 +79,7 @@ class BatteryInfoActivity : BaseActivity() {
             unregisterReceiver(batteryReceiver)
         }.onFailure(Throwable::printStackTrace)
     }
-가
+
     private fun observeChange() {
         repeatOnStarted {
             viewModel.eventFlow.collect { event ->
