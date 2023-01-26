@@ -23,12 +23,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.hong.presentation.R
 import com.hstar.base.presentation.BaseActivity
 import com.hstar.base.presentation.util.repeatOnStarted
 import com.hstar.domain.sample.entity.UserEntity
-import com.hstar.presentation.R
 import com.hstar.presentation.comon.component.ImageWholeBackground
-import com.hstar.presentation.comon.component.theme.O2oTheme
+import com.hstar.presentation.comon.component.theme.BaseTheme
 import com.orhanobut.logger.Logger
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
@@ -50,7 +50,7 @@ class SignInActivity : BaseActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             run {
-                O2oTheme {
+                BaseTheme {
                     Surface {
                         ImageWholeBackground(
                             backgroundDrawableResId = R.drawable.bg_sign_in,

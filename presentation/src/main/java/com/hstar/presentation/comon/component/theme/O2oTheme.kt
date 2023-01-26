@@ -47,7 +47,7 @@ val BottomSheetShape = RoundedCornerShape(
 )
 
 @Composable
-fun O2oTheme(content: @Composable () -> Unit) {
+fun BaseTheme(content: @Composable () -> Unit) {
     MaterialTheme(colors = o2oColors, typography = o2oTypography) {
         content()
     }
