@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            MavenArtifactRepository -> url 'https://jitpack.io'
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url 'https://o2odeveloper.web.app/developer/4782894762390293715490562367823498799/maven/repo'
+        }
+    }
+}
+rootProject.name = "CleanArchitecturePractice"
+include ':app'
+include ':presentation'
+include ':domain'
+include ':data'
+include ':base'

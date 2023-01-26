@@ -1,0 +1,26 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: "$rootDir/config.gradle"
+
+android {
+    namespace 'com.hstar.basetemplate'
+}
+
+dependencies {
+    implementation project(':base')
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':presentation')
+
+    // debug
+    debugImplementation(Flipper.FLIPPER)
+    debugImplementation(Flipper.FLIPPER_NETWORK)
+    debugImplementation(Flipper.FLIPPER_CANARY)
+    debugImplementation(Flipper.SOLOADER)
+    debugImplementation(CANARY.CANARY)
+}

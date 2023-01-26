@@ -1,0 +1,87 @@
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        compose true
+    }
+}
+
+dependencies {
+    implementation(KTX.CORE)
+    implementation(AndroidX.APP_COMPAT)
+    implementation(Google.MATERIAL)
+
+    // test
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation(AndroidTest.EXT_JUNIT)
+    androidTestImplementation(AndroidTest.ESPRESSO_CORE)
+
+    // firebase
+    implementation(Firebase.DATABASE)
+    implementation(Firebase.FIRESTORE)
+
+    // hilt
+    implementation(DaggerHilt.DAGGER_HILT)
+    kapt(DaggerHilt.DAGGER_HILT_COMPILER)
+    implementation(DaggerHilt.DAGGER_HILT_VIEW_MODEL)
+    kapt(DaggerHilt.DAGGER_HILT_ANDROIDX_COMPILER)
+
+    // Logger
+    implementation(Hawk.LOGGER)
+    implementation(Hawk.HAWK)
+
+    // timber
+    implementation(Timber.TIMBER)
+
+    // coroutines
+    implementation(Coroutines.COROUTINES)
+    implementation(Coroutines.COROUTINES_CORE)
+
+    // rx
+    implementation(Rx.RX_JAVA)
+    implementation(Rx.RX_KOTLIN)
+    implementation(Rx.RX_ANDROID)
+    implementation(Retrofit.CONVERTER_RX)
+
+    // Compose
+    implementation(Compose.COMPOSE_RUNTIME)
+    implementation(Compose.COMPOSE_UI)
+    implementation(Compose.COMPOSE_FOUNDATION)
+    implementation(Compose.COMPOSE_FOUNDATION_LAYOUT)
+    implementation(Compose.COMPOSE_MATERIAL)
+    implementation(Compose.COMPOSE_RUNTIME_LIVEDATA)
+    implementation(Compose.COMPOSE_UI_TOOLING)
+    implementation(Compose.COMPOSE_UI_TOOLING_PREVIEW)
+    implementation(Compose.COMPOSE_HILT_COMPOSE)
+    implementation(Compose.COMPOSE_LIFE_CYCLE)
+    //implementation(Compose.COMPOSE_THEME_ADAPTER)
+
+    // Landscapist
+    implementation(Landscapist.LANDSCAPIST_GLIDE)
+
+    // Accompanist
+    //implementation(Accompanist.insets)
+}

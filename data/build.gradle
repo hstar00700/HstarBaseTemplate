@@ -1,0 +1,29 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+apply from: "$rootDir/config.gradle"
+
+android {
+    namespace 'com.hstar.data'
+}
+
+dependencies {
+    //implementation 'com.o2o:baselib:2.3.3-20220928-cae4eebf-2'
+    implementation project(':base')
+    implementation project(':domain')
+
+    // Retrofit
+    implementation(Retrofit.RETROFIT)
+    implementation(Retrofit.CONVERTER_GSON)
+    implementation(Retrofit.CONVERTER_JAXB)
+
+    // okHttp
+    implementation(OkHttp.OKHTTP)
+    implementation(OkHttp.LOGGING_INTERCEPTOR)
+
+}
